@@ -163,7 +163,7 @@ function Index() {
             </div>
             <figure className="relative mx-auto w-full max-w-md reveal">
               <div className="absolute -inset-3 rounded-t-[12rem] rounded-b-3xl border border-gold/50" aria-hidden="true" />
-              <img src={PHOTOS[0].src} alt={PHOTOS[0].alt} width={1086} height={1448} className="relative w-full rounded-t-[11rem] rounded-b-2xl object-contain shadow-soft" fetchPriority="high" />
+              <img src={PHOTOS[0]!.src} alt={PHOTOS[0]!.alt} width={1086} height={1448} className="relative w-full rounded-t-[11rem] rounded-b-2xl object-contain shadow-soft" fetchPriority="high" />
             </figure>
           </div>
         </section>
@@ -198,8 +198,8 @@ function Index() {
             </div>
             <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
               {[1, 2, 3, 0].map((i) => (
-                <button key={i} onClick={() => setOpen(i)} className="group overflow-hidden rounded-2xl bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label={`Ampliar foto: ${PHOTOS[i].alt}`}>
-                  <img src={PHOTOS[i].src} alt={PHOTOS[i].alt} loading="lazy" width={1086} height={1448} className="aspect-[3/4] w-full object-cover transition duration-500 group-hover:scale-105" />
+                <button key={i} onClick={() => setOpen(i)} className="group overflow-hidden rounded-2xl bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label={`Ampliar foto: ${PHOTOS[i]!.alt}`}>
+                  <img src={PHOTOS[i]!.src} alt={PHOTOS[i]!.alt} loading="lazy" width={1086} height={1448} className="aspect-[3/4] w-full object-cover transition duration-500 group-hover:scale-105" />
                 </button>
               ))}
             </div>
@@ -290,7 +290,7 @@ function Index() {
 
       {open !== null && (
         <div role="dialog" aria-modal="true" aria-label="Galeria de fotos" className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/90 p-4" onClick={close}>
-          <img src={PHOTOS[open].src} alt={PHOTOS[open].alt} className="max-h-[88vh] max-w-full rounded-xl object-contain" onClick={(e) => e.stopPropagation()} />
+          <img src={PHOTOS[open]!.src} alt={PHOTOS[open]!.alt} className="max-h-[88vh] max-w-full rounded-xl object-contain" onClick={(e) => e.stopPropagation()} />
           <button autoFocus onClick={close} aria-label="Fechar" className="absolute right-4 top-4 rounded-full bg-background p-2 text-foreground"><X className="h-5 w-5" /></button>
           <button onClick={(e) => { e.stopPropagation(); move(-1); }} aria-label="Foto anterior" className="absolute left-3 rounded-full bg-background p-2 text-foreground"><ChevronLeft className="h-6 w-6" /></button>
           <button onClick={(e) => { e.stopPropagation(); move(1); }} aria-label="Próxima foto" className="absolute right-3 rounded-full bg-background p-2 text-foreground"><ChevronRight className="h-6 w-6" /></button>
